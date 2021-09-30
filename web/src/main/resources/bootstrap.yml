@@ -1,0 +1,10 @@
+spring:
+  aop:
+    auto: true
+    # cglib proxy not jdk proxy
+    #proxy-target-class: false
+  profiles:
+    # 启用的配置文件
+    active: @env@
+  main:
+    web-application-type: servlet
