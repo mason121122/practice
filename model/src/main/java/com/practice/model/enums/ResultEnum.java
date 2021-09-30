@@ -1,4 +1,4 @@
-package enums;
+package com.practice.model.enums;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -12,7 +12,13 @@ public enum ResultEnum {
 
     SUCCESS(200, "SUCCESS", "成功"),
     PATH_NOT_FOUND(404, "PATH_NOT_FOUND", "请求地址不存在"),
-    UNKNOWN(-1, "UNKNOWN", "未定义错误");
+    UNKNOWN(-1, "UNKNOWN", "未定义错误"),
+
+    PARAM_ERROR(4000, "PARAM_ERROR", "参数错误"),
+    FILE_NAME_EMPTY_ERROR(4001, "FILE_NAME_EMPTY_ERROR", "文件名不为空"),
+    FILE_SUFFIX_NAME_ERROR(4002, "FILE_SUFFIX_NAME_ERROR", "文件后缀名只能是'.csv'"),
+    FILE_CONTENT_EMPTY_ERROR(4003, "FILE_CONTENT_EMPTY_ERROR", "当前文件内容为空"),
+    FILE_COUNT_MAX_LIMIT_ERROR(4004, "FILE_COUNT_MAX_LIMIT_ERROR", "当前文件已经超过上限2000条");
 
     private int code;
     private String message;

@@ -1,6 +1,6 @@
 package com.practice.web.controller;
 
-import enums.ResultEnum;
+import com.practice.model.enums.ResultEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
