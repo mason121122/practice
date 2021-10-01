@@ -16,28 +16,19 @@
     <name>web</name>
     <description>Demo project for Spring Boot</description>
 
-
     <dependencies>
         <dependency>
             <groupId>com.practice</groupId>
             <artifactId>service</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
-        <!-- 自定义该模块的jar包名称,用于发布 -->
-        <finalName>coupon-util-web-release</finalName>
-        <filters>
-            <filter>src/main/resources/config/filter-${env}.properties</filter>
-        </filters>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

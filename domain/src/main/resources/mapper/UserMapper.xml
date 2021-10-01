@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.practice.domain.dao.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.practice.domain.dao.po.UserPo">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="birthday" property="birthday"/>
+      </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        m_id, tenant_id, mapping_name, business_type, type, mapping_code, start_time, end_time, status, version, create_time, update_time
+    </sql>
+
+    <select id="findAllUser" parameterType="map" resultMap="BaseResultMap">
+        select * from user
+    </select>
+
+</mapper>
