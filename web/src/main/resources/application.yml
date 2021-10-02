@@ -1,8 +1,26 @@
 spring:
+  profiles:
+    # 指定我们需要激活的文档块，如果不指定的话，默认为 default
+    active: sit
+
   datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3306/practice?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    url: jdbc:mysql://${database.master.ip}:${database.master.port}/${database.master.base}?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username: ${database.master.username}
+    password: ${database.master.password}
+#    # master
+#    master:
+#      url: jdbc:mysql://localhost:3306/practice?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+#      username: root
+#      password: 123456
+#
+#    # slave
+#    slave:
+#      url: jdbc:mysql://localhost:3306/practice2?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+#      username: root
+#      password: 123456
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.practice.domain.dao.po
+
+server:
+  port: ${port}
