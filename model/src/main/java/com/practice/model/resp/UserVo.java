@@ -1,5 +1,6 @@
 package com.practice.model.resp;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.Date;
@@ -10,20 +11,12 @@ import java.util.Date;
  */
 @Data
 public class UserVo {
-    /**
-     * id
-     */
+    @ApiModelProperty(value = "主键id", dataType = "Integer")
     private Integer id;
-    /**
-     * 姓名
-     */
+    @ApiModelProperty(value = "姓名", dataType = "String")
     private String name;
-    /**
-     * 性别
-     */
+    @ApiModelProperty(value = "性别", dataType = "String")
     private String sex;
-    /**
-     * 生日
-     */
+    @ApiModelProperty(value = "生日", dataType = "Date")
     private Date birthday;
 }
