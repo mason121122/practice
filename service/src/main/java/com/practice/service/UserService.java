@@ -8,5 +8,15 @@ import com.practice.model.resp.UserVo;
  */
 public interface UserService {
 
+    /**
+     * 主库查询
+     * @return
+     */
     UserVo findAllUser();
+
+    /**
+     * 从库查询
+     * @return
+     */
+    UserVo findAllUser2();
 }

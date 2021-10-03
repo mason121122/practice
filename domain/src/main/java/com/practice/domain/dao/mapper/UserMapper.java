@@ -1,4 +1,4 @@
-package com.practice.domain.dao.mapper.master;
+package com.practice.domain.dao.mapper;
 
 import com.practice.domain.dao.po.master.UserPo;
 import org.springframework.stereotype.Repository;

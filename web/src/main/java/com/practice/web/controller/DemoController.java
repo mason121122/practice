@@ -37,8 +37,21 @@ public class DemoController {
     }
 
 
-    @GetMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ReturnResult<UserVo> findUser() {
+    /**
+     * 查询主库
+     * @return
+     */
+    @GetMapping(value = "/master", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ReturnResult<UserVo> masterFindUser() {
         return ResultBuilder.success(userService.findAllUser());
+    }
+
+    /**
+     * 查询主库
+     * @return
+     */
+    @GetMapping(value = "/slave", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ReturnResult<UserVo> slaveFindUser() {
+        return ResultBuilder.success(userService.findAllUser2());
     }
 }
