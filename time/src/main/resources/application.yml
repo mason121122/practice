@@ -25,28 +25,28 @@ mybatis:
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.practice.domain.dao.po
   configuration:
-    # \u4E0D\u542F\u7528\u4E8C\u7EA7\u7F13\u5B58\uFF0C\u539F\u56E0\u662F\u8FDE\u8868\u67E5\u8BE2\u4F1A\u6709\u95EE\u9898
+    # 不启用二级缓存，原因是连表查询会有问题
     cache-enabled: false
-    # \u67E5\u8BE2\u65F6\uFF0C\u5173\u95ED\u5173\u8054\u5BF9\u8C61\u5373\u65F6\u52A0\u8F7D\u4EE5\u63D0\u9AD8\u6027\u80FD
+    # 查询时，关闭关联对象即时加载以提高性能
     lazy-loading-enabled: true
-    # \u8BBE\u7F6E\u5173\u8054\u5BF9\u8C61\u52A0\u8F7D\u7684\u5F62\u6001\uFF0C\u6B64\u5904\u4E3A\u6309\u9700\u52A0\u8F7D\u5B57\u6BB5(\u52A0\u8F7D\u5B57\u6BB5\u7531SQL\u6307\u5B9A)\uFF0C\u4E0D\u4F1A\u52A0\u8F7D\u5173\u8054\u8868\u7684\u6240\u6709\u5B57\u6BB5\uFF0C\u4EE5\u63D0\u9AD8\u6027\u80FD
+    # 设置关联对象加载的形态，此处为按需加载字段(加载字段由SQL指定)，不会加载关联表的所有字段，以提高性能
     aggressive-lazy-loading: false
-    # \u5BF9\u4E8E\u672A\u77E5\u7684SQL\u67E5\u8BE2\uFF0C\u5141\u8BB8\u8FD4\u56DE\u4E0D\u540C\u7684\u7ED3\u679C\u96C6\u4EE5\u8FBE\u5230\u901A\u7528\u7684\u6548\u679C
+    # 对于未知的SQL查询，允许返回不同的结果集以达到通用的效果
     multiple-result-sets-enabled: true
-    # \u5141\u8BB8\u4F7F\u7528\u5217\u6807\u7B7E\u4EE3\u66FF\u5217\u540D
+    # 允许使用列标签代替列名
     use-column-label: true
-    # \u5141\u8BB8\u4F7F\u7528\u81EA\u5B9A\u4E49\u7684\u4E3B\u952E\u503C(\u6BD4\u5982\u7531\u7A0B\u5E8F\u751F\u6210\u7684UUID 32\u4F4D\u7F16\u7801\u4F5C\u4E3A\u952E\u503C)\uFF0C\u6570\u636E\u8868\u7684PK\u751F\u6210\u7B56\u7565\u5C06\u88AB\u8986\u76D6
+    # 允许使用自定义的主键值(比如由程序生成的UUID 32位编码作为键值)，数据表的PK生成策略将被覆盖
     use-generated-keys: true
-    # \u7ED9\u4E88\u88AB\u5D4C\u5957\u7684resultMap\u4EE5\u5B57\u6BB5-\u5C5E\u6027\u7684\u6620\u5C04\u652F\u6301(NONE, PARTIAL, FULL)
+    # 给予被嵌套的resultMap以字段-属性的映射支持(NONE, PARTIAL, FULL)
     auto-mapping-behavior: FULL
-    # \u914D\u7F6E\u9ED8\u8BA4\u7684\u6267\u884C\u5668\uFF0CSIMPLE \u6267\u884C\u5668\u6CA1\u6709\u4EC0\u4E48\u7279\u522B\u4E4B\u5904\uFF0CREUSE \u6267\u884C\u5668\u91CD\u7528\u9884\u5904\u7406\u8BED\u53E5\uFF0CBATCH \u6267\u884C\u5668\u91CD\u7528\u8BED\u53E5\u548C\u6279\u91CF\u66F4\u65B0
+    # 配置默认的执行器，SIMPLE 执行器没有什么特别之处，REUSE 执行器重用预处理语句，BATCH 执行器重用语句和批量更新
     default-executor-type: REUSE
-    # \u636E\u5E93\u8D85\u8FC7180\u79D2\u4ECD\u672A\u54CD\u5E94\u5219\u8D85\u65F6
+    # 据库超过180秒仍未响应则超时
     default-statement-timeout: 180
-    # \u662F\u5426\u542F\u7528\u4E0B\u5212\u7EBF\u4E0E\u9A7C\u5CF0\u5F0F\u547D\u540D\u89C4\u5219\u7684\u6620\u5C04\uFF08\u5982first_name => firstName\uFF09
+    # 是否启用下划线与驼峰式命名规则的映射（如first_name => firstName）
     map-underscore-to-camel-case: true
     default-fetch-size: 200
-    # \u4E0D\u4F7F\u7528SESSION\uFF0C\u539F\u56E0\u662F\u591A\u4E2A\u670D\u52A1\u5668\u65F6\u4F1A\u51FA\u73B0\u95EE\u9898
+    # 不使用SESSION，原因是多个服务器时会出现问题
     local-cache-scope: STATEMENT
     jdbc-type-for-null: OTHER
     lazy-load-trigger-methods: equals,clone,hashCode,toString
@@ -55,6 +55,6 @@ mybatis:
 
 logging:
   level:
-    com.practice.domain.dao.mapper: DEBUG # \u6539\u6210\u4F60\u7684mapper\u6587\u4EF6\u6240\u5728\u5305\u8DEF\u5F84
+    com.practice.domain.dao.mapper: DEBUG
 
 
