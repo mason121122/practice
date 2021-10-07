@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author Mark Wang
  * @date 2021/9/30
- * 类转化器
+ * 类转化器最好还是使用BeanUtils类转换，此方法可能导致异常
  * 借助FastJson从一个类转化为另一个类，主要用于同一个模型的VO/BO/DTO/PO之间的转换，他们具有基本相同的属性名称
  */
 public class ClazzConverter {
