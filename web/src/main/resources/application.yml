@@ -4,7 +4,7 @@ server:
 spring:
   profiles:
     # 指定我们需要激活的文档块，如果不指定的话，默认为 default
-    active: sit
+    active: dev
 
   datasource:
 #    url: jdbc:mysql://${database.master.ip}:${database.master.port}/${database.master.base}?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
