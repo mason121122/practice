@@ -25,7 +25,7 @@ public class TestJob {
         System.out.println(DateUtil.getTimeShort(new Date())+" >>fixedRate执行....");
     }
 
-    @Scheduled(cron = "0 0/1 * * * ?")
+    @Scheduled(cron = "0/30 * * * * ?")
     public void cronJob(){
         System.out.println(DateUtil.getTimeShort(new Date())+" >>cron执行....");
     }
