@@ -29,14 +29,8 @@ public class ReflectionTest {
                 }
                 System.out.println(method.getName());
             }
-        } catch (ClassNotFoundException | NoSuchMethodException e) {
+        } catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException | IllegalAccessException | InstantiationException e) {
             logger.error("反射异常{}", e.getMessage());
-        } catch (InvocationTargetException e) {
-            logger.error("反射异常{}", e.getMessage());
-        } catch (IllegalAccessException e) {
-            logger.error("反射异常{}", e.getMessage());
-        } catch (InstantiationException e) {
-            e.printStackTrace();
         }
     }
 }
