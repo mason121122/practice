@@ -1,4 +1,4 @@
-package com.practice.domain.dao.po.master;
+package com.practice.domain.dao.po;
 
 import lombok.Data;
 

@@ -3,7 +3,7 @@ package com.practice.service.impl;
 import com.practice.common.constants.DataSourceConstants;
 import com.practice.domain.annotation.DS;
 import com.practice.domain.dao.mapper.UserMapper;
-import com.practice.domain.dao.po.master.UserPo;
+import com.practice.domain.dao.po.UserPo;
 import com.practice.model.resp.UserVo;
 import com.practice.service.UserService;
 import org.springframework.beans.BeanUtils;

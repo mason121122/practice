@@ -3,7 +3,7 @@
 <mapper namespace="com.practice.domain.dao.mapper.UserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.practice.domain.dao.po.master.UserPo">
+    <resultMap id="BaseResultMap" type="com.practice.domain.dao.po.UserPo">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="sex" property="sex"/>
