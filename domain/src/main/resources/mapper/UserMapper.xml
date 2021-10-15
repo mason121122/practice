@@ -18,5 +18,11 @@
     <select id="findAllUser" parameterType="map" resultMap="BaseResultMap">
         select * from user
     </select>
+    <select id="findUserById" resultType="com.practice.domain.dao.po.UserPo">
+        select * from user
+        <where>
+            id = #{userId}
+        </where>
+    </select>
 
 </mapper>

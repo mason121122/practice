@@ -1,6 +1,7 @@
 package com.practice.service.impl;
 
 import com.practice.common.constants.DataSourceConstants;
+import com.practice.common.utils.ClazzConverter;
 import com.practice.domain.annotation.DS;
 import com.practice.domain.dao.mapper.UserMapper;
 import com.practice.domain.dao.po.UserPo;
@@ -9,6 +10,9 @@ import com.practice.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Mark Wang
@@ -21,23 +25,31 @@ public class UserServiceImpl implements UserService {
 
     @DS(DataSourceConstants.MASTER_DATA_SOURCE)
     @Override
-    public UserVo findAllUser() {
-        UserVo userVo = new UserVo();
-        UserPo userPo = userMapper.findAllUser();
+    public List<UserVo> findAllUser() {
+        List<UserVo> userVo = new ArrayList<>();
+        List<UserPo> userPo = userMapper.findAllUser();
         if(null != userPo){
-            BeanUtils.copyProperties(userMapper.findAllUser(), userVo);
+            userVo = ClazzConverter.converterClass(userPo,UserVo.class);
         }
         return userVo;
     }
 
     @DS(DataSourceConstants.SLAVE_DATA_SOURCE)
     @Override
-    public UserVo findAllUser2() {
-        UserVo userVo = new UserVo();
-        UserPo userPo = userMapper.findAllUser();
+    public List<UserVo> findAllUser2() {
+        List<UserVo> userVo = new ArrayList<>();
+        List<UserPo> userPo = userMapper.findAllUser();
         if(null != userPo){
-            BeanUtils.copyProperties(userMapper.findAllUser(), userVo);
+            userVo = ClazzConverter.converterClass(userPo,UserVo.class);
         }
+        return userVo;
+    }
+
+    @Override
+    public UserVo findUserById(Integer userId) {
+        UserVo userVo = new UserVo();
+        UserPo userPo = userMapper.findUserById(userId);
+        BeanUtils.copyProperties(userPo,userVo);
         return userVo;
     }
 }
