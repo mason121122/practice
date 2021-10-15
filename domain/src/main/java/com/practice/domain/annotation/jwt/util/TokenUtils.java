@@ -17,7 +17,8 @@ public class TokenUtils {
 //        String token="";
 //        token= JWT.create().withAudience(user.getId().toString())
 //                .sign(Algorithm.HMAC256(user.getPassword()));
-        String token = getRequest().getHeader("token");// 从 http 请求头中取出 token
+        // 从 http 请求头中取出 token
+        String token = getRequest().getHeader("token");
         String userId = JWT.decode(token).getAudience().get(0);
         return token;
     }
