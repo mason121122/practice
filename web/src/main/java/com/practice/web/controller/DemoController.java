@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @author Mark Wang
  * @date 2021/9/30
@@ -47,7 +49,7 @@ public class DemoController {
      */
     @ApiOperation(value = "多数据源master测试接口", notes = "多数据源master测试接口")
     @GetMapping(value = "/master", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ReturnResult<UserVo> masterFindUser() {
+    public ReturnResult<List<UserVo>> masterFindUser() {
         return ResultBuilder.success(userService.findAllUser());
     }
 
@@ -57,7 +59,7 @@ public class DemoController {
      */
     @ApiOperation(value = "多数据源slave测试接口", notes = "多数据源slave测试接口")
     @GetMapping(value = "/slave", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ReturnResult<UserVo> slaveFindUser() {
+    public ReturnResult<List<UserVo>> slaveFindUser() {
         return ResultBuilder.success(userService.findAllUser2());
     }
 }

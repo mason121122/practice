@@ -22,5 +22,5 @@ public interface UserService {
      */
     List<UserVo> findAllUser2();
 
-    UserVo findUserById(Integer userId);
+    UserVo findUserByUserName(String userName);
 }

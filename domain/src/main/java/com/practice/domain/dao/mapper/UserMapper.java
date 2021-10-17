@@ -15,5 +15,5 @@ public interface UserMapper {
 
     List<UserPo> findAllUser();
 
-    UserPo findUserById(Integer userId);
+    UserPo findUserByUserName(String userName);
 }

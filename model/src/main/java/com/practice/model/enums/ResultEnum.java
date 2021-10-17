@@ -13,6 +13,7 @@ public enum ResultEnum {
     SUCCESS(200, "SUCCESS", "成功"),
     PATH_NOT_FOUND(404, "PATH_NOT_FOUND", "请求地址不存在"),
     UNKNOWN(-1, "UNKNOWN", "未定义错误"),
+    LOGIN_ERR(-2,"LOGIN_ERR","登入失败"),
 
     PARAM_ERROR(4000, "PARAM_ERROR", "参数错误"),
     FILE_NAME_EMPTY_ERROR(4001, "FILE_NAME_EMPTY_ERROR", "文件名不为空"),

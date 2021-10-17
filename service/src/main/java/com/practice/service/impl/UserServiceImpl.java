@@ -46,9 +46,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserVo findUserById(Integer userId) {
+    public UserVo findUserByUserName(String userName) {
         UserVo userVo = new UserVo();
-        UserPo userPo = userMapper.findUserById(userId);
+        UserPo userPo = userMapper.findUserByUserName(userName);
         BeanUtils.copyProperties(userPo,userVo);
         return userVo;
     }
