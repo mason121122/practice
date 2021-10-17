@@ -14,6 +14,7 @@ import java.lang.reflect.Method;
 public class ReflectionTest {
     private static final Logger logger = LoggerFactory.getLogger(ReflectionTest.class);
 
+
     public static void main(String[] args) {
         String ClassName = "com.practice.domain.reflection.Demo";
         String function = "find";
