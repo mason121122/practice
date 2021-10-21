@@ -45,7 +45,7 @@ public class JwtUtil {
                 // 添加头部
                 .withHeader(map)
                 //可以将基本信息放到claims中
-                //userName
+                //userName 后面可以加入一些需要的基础信息如昵称，性别，生日
                 .withClaim("userName", user.getUserName())
                 //超时设置,设置过期的日期
                 .withExpiresAt(expireDate)
@@ -61,6 +61,11 @@ public class JwtUtil {
      */
     public static Map<String, Claim> verifyToken(String token) {
         DecodedJWT jwt = null;
+        // todo 不知道为什么swagger3配置全局token HttpAuthenticationScheme.JWT_BEARER_BUILDER会自带一个Bearer 前缀 ，后续需要改进，HttpAuthenticationScheme这个类需要好好看看
+        if(token.contains("Bearer ")){
+            String[] tokens = token.split("Bearer ");
+            token = tokens[1];
+        }
         try {
             JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET)).build();
             jwt = verifier.verify(token);

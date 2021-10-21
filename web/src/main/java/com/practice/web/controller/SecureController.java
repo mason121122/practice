@@ -1,5 +1,7 @@
 package com.practice.web.controller;
 
+import com.practice.model.result.ReturnResult;
+import com.practice.web.support.ResultBuilder;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SecureController {
     @ApiOperation(value = "jwtDemo验证", notes = "jwtDemo验证")
     @GetMapping("/getMessage")
-    public String getMessage() {
-        return "你已通过验证";
+    public ReturnResult getMessage() {
+        return ResultBuilder.success();
     }
 }
