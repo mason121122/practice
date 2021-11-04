@@ -20,6 +20,8 @@ spring:
       jdbc-url: jdbc:mysql://${database.slave.ip}:${database.slave.port}/${database.slave.base}?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
       username: ${database.slave.username}
       password: ${database.slave.password}
+swagger2:
+  enable: ${swagger.enable}
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.practice.domain.dao.po
@@ -52,6 +54,10 @@ mybatis:
     log-prefix: mybatis.sql.
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+#springfox:
+#  documentation:
+#    swagger-ui:
+#      enabled: ${swagger.enable}
 logging:
   level:
     com.practice.domain.dao.mapper: DEBUG # 指定日志级别
