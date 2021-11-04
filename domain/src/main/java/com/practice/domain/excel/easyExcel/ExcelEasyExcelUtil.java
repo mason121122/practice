@@ -2,6 +2,7 @@ package com.practice.domain.excel.easyExcel;
 
 
 import com.alibaba.excel.EasyExcel;
+import com.practice.common.utils.DateUtil;
 import com.practice.common.utils.DateUtils;
 import com.practice.model.bo.DownloadData;
 import org.apache.commons.lang3.RandomUtils;
@@ -9,7 +10,9 @@ import org.apache.commons.lang3.RandomUtils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +31,7 @@ public class ExcelEasyExcelUtil {
             dataObj.setAge(RandomUtils.nextInt(22,100));
             dataObj.setScore(RandomUtils.nextDouble(85,100));
             dataObj.setPass(i / 2 == 0);
-            dataObj.setTestDate(DateUtils.parseDatetimeString(new Date().toString(),"yyyy-MM-dd HH:mm:ss"));
+            dataObj.setTestDate(DateUtil.getNowDate(new Date()));
             dataLists.add(dataObj);
         }
         return dataLists;

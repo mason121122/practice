@@ -27,11 +27,16 @@ public class DateUtil {
      *
      * @return 返回时间类型 yyyy-MM-dd HH:mm:ss
      */
-    public static Date getNowDate(Date now) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String dateString = formatter.format(now);
-        ParsePosition pos = new ParsePosition(8);
-        Date currentTime_2 = formatter.parse(dateString, pos);
+    public static Date getNowDate(Date now){
+        Date currentTime_2 = null;
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String dateString = formatter.format(now);
+//        ParsePosition pos = new ParsePosition(8);
+            currentTime_2 = formatter.parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return currentTime_2;
     }
 
