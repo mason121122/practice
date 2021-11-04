@@ -37,7 +37,7 @@ public class ExcelDemoController {
     @GetMapping(value = "/EasyExcelTest", produces = MediaType.APPLICATION_JSON_VALUE)
     public void tests(HttpServletResponse response,HttpServletRequest request){
         try {
-            ExcelEasyExcelUtil.exportExcelByEasyExcel(request, response, 10);
+            ExcelEasyExcelUtil.exportExcelByEasyExcel(request, response, 1000000);
         } catch (IOException e) {
             log.error("导出失败",e);
             throw new BusinessException("导出失败");
@@ -52,6 +52,6 @@ public class ExcelDemoController {
     @ApiOperation(value = "poi测试接口", notes = "poi测试接口")
     @GetMapping(value = "/poiTest", produces = MediaType.APPLICATION_JSON_VALUE)
     public void poiTests(HttpServletResponse response,HttpServletRequest request) throws IOException {
-        ExcelPoiUtil.exportExcelBySXSSFWorkbook(request, response, 10);
+        ExcelPoiUtil.exportExcelBySXSSFWorkbook(request, response, 1000000);
     }
 }
