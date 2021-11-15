@@ -1,6 +1,7 @@
 package com.practice.service;
 
 import com.practice.model.resp.UserVo;
+import org.springframework.stereotype.Component;
 
 /**
  * @author Mark Wang
