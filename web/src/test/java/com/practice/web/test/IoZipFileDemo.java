@@ -4,9 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 public class IoZipFileDemo {
@@ -17,8 +15,14 @@ public class IoZipFileDemo {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ZipOutputStream zos = new ZipOutputStream(baos);
         ZipEntry entry = new ZipEntry("111.txt");
+        System.out.println(b.length);
         entry.setSize(b.length);
         zos.putNextEntry(entry);
+
+        ZipEntry entry2 = new ZipEntry("1112.txt");
+        System.out.println(b.length);
+        entry2.setSize(b.length);
+        zos.putNextEntry(entry2);
         zos.write(b);
         zos.closeEntry();
         zos.close();
