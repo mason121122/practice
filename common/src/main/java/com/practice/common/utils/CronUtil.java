@@ -25,7 +25,7 @@ public class CronUtil {
                 && null == taskScheduleModel.getMinute()
                 && null == taskScheduleModel.getHour()) {
             //每隔几秒
-            if (taskScheduleModel.getJobType().intValue() == 0) {
+            if (taskScheduleModel.getJobType() == 0) {
                 cronExp.append("0/").append(taskScheduleModel.getSecond());
                 cronExp.append(" ");
                 cronExp.append("* ");
@@ -41,7 +41,7 @@ public class CronUtil {
                 && null != taskScheduleModel.getMinute()
                 && null == taskScheduleModel.getHour()) {
             //每隔几分钟
-            if (taskScheduleModel.getJobType().intValue() == 4) {
+            if (taskScheduleModel.getJobType() == 4) {
                 cronExp.append("* ");
                 cronExp.append("0/").append(taskScheduleModel.getMinute());
                 cronExp.append(" ");
