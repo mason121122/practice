@@ -1,5 +1,6 @@
 package com.practice.config;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -21,6 +22,12 @@ public class Swagger2Config {
     @Bean
     public Docket docket(){
         return new Docket(DocumentationType.OAS_30)
+//                .apiInfo(apiInfo())
+//                .enable(false)
+//                .select()
+//                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+//                .paths(PathSelectors.any())
+//                .build();
                 .apiInfo(apiInfo()).enable(true)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.practice"))

@@ -4,11 +4,14 @@ server:
 spring:
   profiles:
     active: dev
-
+    # 此配置仅为spingboot2.6.1一下版本的折中配置，spingboot2.6.1以下版本不支持swagger3.0
+#  mvc:
+#    pathmatch:
+#      matching-strategy: ant_path_matcher
   datasource:
-#    url: jdbc:mysql://${database.master.ip}:${database.master.port}/${database.master.base}?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-#    username: ${database.master.username}
-#    password: ${database.master.password}
+    #    url: jdbc:mysql://${database.master.ip}:${database.master.port}/${database.master.base}?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    #    username: ${database.master.username}
+    #    password: ${database.master.password}
     # master
     master:
       jdbc-url: jdbc:mysql://${database.master.ip}:${database.master.port}/${database.master.base}?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
