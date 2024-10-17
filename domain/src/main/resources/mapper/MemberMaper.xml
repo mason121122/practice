@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.practice.domain.dao.mapper.MemberMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.practice.domain.dao.po.MemberPo">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="gender" property="gender"/>
+        <result column="member_name" property="memberName"/>
+        <result column="member_id" property="memberId"/>
+        <result column="integral" property="integral"/>
+        <result column="profile_photo" property="profilePhoto"/>
+        <result column="version" property="version"/>
+        <result column="create_user" property="createUser"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, gender, member_name, member_id, integral, profile_photo, version, create_user, create_time, update_user, update_time
+    </sql>
+
+    <!-- 新增into字段 -->
+    <sql id="Add_Base_Column_List">
+        name, gender, member_name, member_id, integral, profile_photo
+    </sql>
+
+    <!--修改-->
+    <update id="updateMember">
+        update member0_10000
+        SET name = #{name},
+            gender = #{gender},
+            member_name = #{memberName},
+            member_id = #{memberId},
+            integral=#{integral},
+            profile_photo = #{profilePhoto},
+            version = #{version}+1
+        WHERE id = #{id} and version = #{version}
+    </update>
+
+    <!--刪除-->
+    <delete id="removeMember">
+        delete from member0_10000
+        where id = #{id}
+    </delete>
+
+    <!--新增-->
+    <insert id="addMember">
+        INSERT INTO member0_10000(<include refid="Add_Base_Column_List"/>)
+        VALUES
+            (#{name},
+            #{gender},
+            #{memberName},
+            #{memberId},
+            #{integral},
+            #{profilePhoto})
+    </insert>
+
+    <!--分页查询-->
+    <select id="MemberListPagingQuery" parameterType="map" resultMap="BaseResultMap">
+        select * from member0_10000
+        <where>
+            <if test="null != name">
+                name = #{name}
+            </if>
+            <if test="integrals.length > 0">
+                and integral in
+                <foreach item="item" collection="integrals" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="null != gender">
+                and gender = #{gender}
+            </if>
+            <if test="null != memberName">
+                and member_name = #{memberName}
+            </if>
+        </where>
+        ORDER BY create_time desc,id
+        LIMIT #{pageIndex},#{pageSize}
+    </select>
+
+    <!--查询总数-->
+    <select id="MemberListPagingQueryCount" parameterType="map" resultType="Integer">
+        select count(id) from member0_10000
+        <where>
+            <if test="null != name">
+                name = #{name}
+            </if>
+            <if test="integrals.size() > 0">
+                and integral in
+                <foreach item="item" collection="integrals" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="null != gender">
+                and gender = #{gender}
+            </if>
+            <if test="null != memberName">
+                and member_name = #{memberName}
+            </if>
+        </where>
+    </select>
+
+</mapper>

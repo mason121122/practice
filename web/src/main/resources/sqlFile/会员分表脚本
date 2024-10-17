@@ -1,0 +1,28 @@
+CREATE TABLE member0_10000 (
+	`id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
+	`name` VARCHAR(50) not null COMMENT '姓名',
+	`gender` INT DEFAULT 2 COMMENT '性别：0、男 1、女 2、其他',
+	`member_name` VARCHAR(50) not null COMMENT '会员昵称',
+	`member_id` VARCHAR(50) not null COMMENT '会员id',
+	`integral` INT(11) not null DEFAULT 0 COMMENT '积分',
+	`profile_photo` LONGBLOB COMMENT '头像',
+	`version` bigint DEFAULT 0,
+  `create_user` varchar(200) NOT NULL DEFAULT 'sys',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_user` varchar(200) NOT NULL DEFAULT 'sys',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+
+/*删除表并检查是否存在*/
+DROP TABLE IF EXISTS member0_10000;
+/*清空表保留表结构*/
+TRUNCATE TABLE member0_10000;
+
+/*删除表并备份*/
+DROP TABLE member0_10000;
+CREATE TABLE member0_10000 LIKE member10001_20000;
+INSERT INTO member10001_20000 SELECT * FROM member0_10000;
+

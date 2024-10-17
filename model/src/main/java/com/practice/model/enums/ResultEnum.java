@@ -18,7 +18,9 @@ public enum ResultEnum {
     FILE_NAME_EMPTY_ERROR(4001, "FILE_NAME_EMPTY_ERROR", "文件名不为空"),
     FILE_SUFFIX_NAME_ERROR(4002, "FILE_SUFFIX_NAME_ERROR", "文件后缀名只能是'.csv'"),
     FILE_CONTENT_EMPTY_ERROR(4003, "FILE_CONTENT_EMPTY_ERROR", "当前文件内容为空"),
-    FILE_COUNT_MAX_LIMIT_ERROR(4004, "FILE_COUNT_MAX_LIMIT_ERROR", "当前文件已经超过上限2000条");
+    FILE_COUNT_MAX_LIMIT_ERROR(4004, "FILE_COUNT_MAX_LIMIT_ERROR", "当前文件已经超过上限2000条"),
+
+    ERROR(9999, "ERROR", "失败");
 
     private int code;
     private String message;
